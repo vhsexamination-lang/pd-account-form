@@ -73,21 +73,29 @@
             margin-top: 5px;
             font-weight: 500;
         }
+
+        .subtitle {
+            text-align: center; 
+            border:none; 
+            margin-top:0; 
+            color:#333;
+        }
     </style>
 </head>
 <body>
 
 <div class="form-container">
     <h2 style="text-align: center; border:none; margin-top:0; color:#333;">പി.ഡി. അക്കൗണ്ട് സ്റ്റേറ്റ്മെന്റ് (2021-2024)</h2>
+    <h3 class="subtitle">പരീക്ഷാ വിഭാഗം, പൊതു വിദ്യാഭ്യാസ വകുപ്പ് (വി. എച്ച്. എസ്. ഇ.) തിരുവനന്തപുരം</h3>
+    
 
     <div class="instructions">
         <h3 style="color: #e65100; margin-top: 0;">⚠️ പ്രധാന നിർദ്ദേശങ്ങൾ</h3>
         <ul style="margin-top: 10px; padding-left: 20px; color: #4d4ae4;">
-            <li>ഓരോ ചോദ്യവും <b>വ്യക്തമായി മനസ്സിലാക്കിയതിനു ശേഷം മാത്രം</b> ഉത്തരങ്ങൾ പൂരിപ്പിക്കുക.</li>
-            <li>തുകകൾ ടൈപ്പ് ചെയ്യുമ്പോൾ <b>തെറ്റുകളില്ലായെന്ന് വീണ്ടും ഉറപ്പുവരുത്തുക</b>.</li>
-            <li>അലോട്ട്മെന്റ് ഇല്ലെങ്കിൽ "No" തിരഞ്ഞെടുക്കുക.</li>
+            <li>ഓരോ ചോദ്യവും <b>വ്യക്തമായി മനസ്സിലാക്കിയതിനു ശേഷം മാത്രം</b> ഉത്തരങ്ങൾ പൂരിപ്പിക്കുക.</li><br>
+            <li>തുകകൾ ടൈപ്പ് ചെയ്യുമ്പോൾ <b>തെറ്റുകളില്ലായെന്ന് വീണ്ടും ഉറപ്പുവരുത്തുക</b>.</li><br>
             <li>ഒരു സ്കൂൾ <b>ഒന്നിൽ കൂടുതൽ തവണ ഈ ഫോം പൂരിപ്പിച്ച് അയക്കാൻ പാടില്ല</b>. എന്നാൽ പ്രത്യേക സാഹചര്യത്തിൽ അങ്ങിനെ
-                ചെയ്യേണ്ടി വരുന്ന പക്ഷം ഏറ്റവും അവസാനം ലഭിച്ച എൻട്രിയെ ശരിയായി കണക്കാക്കുന്നതായിരിക്കും.</li>
+                ചെയ്യേണ്ടി വരുന്ന പക്ഷം ഏറ്റവും അവസാനം ലഭിച്ച എൻട്രിയെ ശരിയായി കണക്കാക്കുന്നതായിരിക്കും.</li><br>
             <li>ഈ ഫോം പൂരിപ്പിച്ച് അയക്കുന്നതിനുള്ള <b>അവസാന തീയതി 00/00/2025 ആണ്</b>.</li>
         </ul>
     </div>
@@ -119,14 +127,14 @@
                 <input type="number" name="2021_Sept_Contingency" class="calc-2021_Sept" oninput="calc('2021_Sept')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2021_Sept_Remuneration" class="calc-2021_Sept" oninput="calc('2021_Sept')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2021_Sept_Duty" class="calc-2021_Sept" oninput="calc('2021_Sept')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2021_Sept_TADA" class="calc-2021_Sept" oninput="calc('2021_Sept')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2021_Sept">₹0.00</span></div>
                 <input type="hidden" name="2021_Sept_GrandTotal" id="val_2021_Sept">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2021 ഒന്നാം വർഷ (സെപ്റ്റമ്പർ 2021) പരീക്ഷയുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -145,14 +153,14 @@
                 <input type="number" name="2022_Jan_Contingency" class="calc-2022_Jan" oninput="calc('2022_Jan')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2022_Jan_Remuneration" class="calc-2022_Jan" oninput="calc('2022_Jan')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2022_Jan_Duty" class="calc-2022_Jan" oninput="calc('2022_Jan')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2022_Jan_TADA" class="calc-2022_Jan" oninput="calc('2022_Jan')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2022_Jan">₹0.00</span></div>
                 <input type="hidden" name="2022_Jan_GrandTotal" id="val_2022_Jan">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2021 ഒന്നാം വർഷ ഇംപ്രൂവ്മെൻറ് (ജനുവരി 2022) പരീക്ഷയുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -170,14 +178,14 @@
                 <input type="number" name="2022_Reg_Contingency" class="calc-2022_Reg" oninput="calc('2022_Reg')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2022_Reg_Remuneration" class="calc-2022_Reg" oninput="calc('2022_Reg')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2022_Reg_Duty" class="calc-2022_Reg" oninput="calc('2022_Reg')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2022_Reg_TADA" class="calc-2022_Reg" oninput="calc('2022_Reg')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2022_Reg">₹0.00</span></div>
                 <input type="hidden" name="2022_Reg_GrandTotal" id="val_2022_Reg">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2022 ഒന്നാം വർഷ (ജൂൺ) പരീക്ഷ , രണ്ടാം വർഷ (മാർച്ച്) പരീക്ഷകളുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -195,14 +203,14 @@
                 <input type="number" name="2022_SAY_Contingency" class="calc-2022_SAY" oninput="calc('2022_SAY')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2022_SAY_Remuneration" class="calc-2022_SAY" oninput="calc('2022_SAY')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2022_SAY_Duty" class="calc-2022_SAY" oninput="calc('2022_SAY')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2022_SAY_TADA" class="calc-2022_SAY" oninput="calc('2022_SAY')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2022_SAY">₹0.00</span></div>
                 <input type="hidden" name="2022_SAY_GrandTotal" id="val_2022_SAY">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2022 സേ (ജൂലൈ) പരീക്ഷയുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -220,14 +228,14 @@
                 <input type="number" name="2022_Imp_Contingency" class="calc-2022_Imp" oninput="calc('2022_Imp')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2022_Imp_Remuneration" class="calc-2022_Imp" oninput="calc('2022_Imp')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2022_Imp_Duty" class="calc-2022_Imp" oninput="calc('2022_Imp')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2022_Imp_TADA" class="calc-2022_Imp" oninput="calc('2022_Imp')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2022_Imp">₹0.00</span></div>
                 <input type="hidden" name="2022_Imp_GrandTotal" id="val_2022_Imp">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2022 ഇംപ്രൂവ്മെന്റ് (ഒക്ടോബർ) പരീക്ഷയുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -245,14 +253,14 @@
                 <input type="number" name="2023_Mar_Contingency" class="calc-2023_Mar" oninput="calc('2023_Mar')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2023_Mar_Remuneration" class="calc-2023_Mar" oninput="calc('2023_Mar')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2023_Mar_Duty" class="calc-2023_Mar" oninput="calc('2023_Mar')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2023_Mar_TADA" class="calc-2023_Mar" oninput="calc('2023_Mar')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2023_Mar">₹0.00</span></div>
                 <input type="hidden" name="2023_Mar_GrandTotal" id="val_2023_Mar">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2023 ഒന്നും രണ്ടും വർഷ (മാർച്ച്) പരീക്ഷകകളുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -270,14 +278,14 @@
                 <input type="number" name="2023_SAY_Contingency" class="calc-2023_SAY" oninput="calc('2023_SAY')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2023_SAY_Remuneration" class="calc-2023_SAY" oninput="calc('2023_SAY')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2023_SAY_Duty" class="calc-2023_SAY" oninput="calc('2023_SAY')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2023_SAY_TADA" class="calc-2023_SAY" oninput="calc('2023_SAY')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2023_SAY">₹0.00</span></div>
                 <input type="hidden" name="2023_SAY_GrandTotal" id="val_2023_SAY">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2023 സേ (ജൂൺ) പരീക്ഷയുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -295,14 +303,14 @@
                 <input type="number" name="2023_Imp_Contingency" class="calc-2023_Imp" oninput="calc('2023_Imp')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2023_Imp_Remuneration" class="calc-2023_Imp" oninput="calc('2023_Imp')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2023_Imp_Duty" class="calc-2023_Imp" oninput="calc('2023_Imp')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2023_Imp_TADA" class="calc-2023_Imp" oninput="calc('2023_Imp')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2023_Imp">₹0.00</span></div>
                 <input type="hidden" name="2023_Imp_GrandTotal" id="val_2023_Imp">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2023 ഇംപ്രൂവ്മെന്റ് (സെപ്റ്റമ്പർ) പരീക്ഷയുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
@@ -320,14 +328,14 @@
                 <input type="number" name="2024_Mar_Contingency" class="calc-2024_Mar" oninput="calc('2024_Mar')" min="0" step="0.01">
                 <label>2. നൈറ്റ് വാച്ച്മാനുള്ള പ്രതിഫലത്തിനായി ചെലവഴിച്ച മൊത്തം തുക.:</label>
                 <input type="number" name="2024_Mar_Remuneration" class="calc-2024_Mar" oninput="calc('2024_Mar')" min="0" step="0.01">
-                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക:</label>
+                <label>3. അധ്യാപകർക്ക് നൽകേണ്ട പ്രതിഫലത്തിനായി ആവശ്യമായ മൊത്തം തുക (ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഡെപ്യൂട്ടി ചീഫ് സൂപ്പരിന്റണ്ടന്റ്, ഇൻവിജിലേറ്റർ, ഇൻ്റേണൽ, എക്സ്റ്റേണൽ തുടങ്ങിയവർക്ക്):</label>
                 <input type="number" name="2024_Mar_Duty" class="calc-2024_Mar" oninput="calc('2024_Mar')" min="0" step="0.01">
                 <label>4. TA/DA-യ്‌ക്കായി ആവശ്യമായ ആകെ തുക:</label>
                 <input type="number" name="2024_Mar_TADA" class="calc-2024_Mar" oninput="calc('2024_Mar')" min="0" step="0.01">
                 <div class="total-display"><span>5. ആകെ ചെലവ്:</span> <span id="total_2024_Mar">₹0.00</span></div>
                 <input type="hidden" name="2024_Mar_GrandTotal" id="val_2024_Mar">
                 <div class="verification-box">
-                    <label><input type="checkbox" value="Confirmed">മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
+                    <label><input type="checkbox" value="Confirmed">2024 ഒന്നും രണ്ടും വർഷ (മാർച്ച്) പരീക്ഷകകളുമായി ബന്ധപ്പെട്ട് മുകളിൽ നൽകിയ കണക്കുകൾ ശരിയാണെന്ന് ഞാൻ ഉറപ്പുവരുത്തുന്നു.</label>
                 </div>
             </div>
         </div>
