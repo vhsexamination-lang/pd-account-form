@@ -5,122 +5,453 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PD Account Statement Form</title>
     <style>
-        /* CSS Styles */
+        /* **********************************************
+           MODERN MINIMALISTIC CSS 
+           ********************************************** */
+        :root {
+            --primary-color: #2c3e50;    /* Dark Slate Blue */
+            --accent-color: #3b82f6;     /* Modern Blue */
+            --success-color: #10b981;    /* Emerald Green */
+            --warning-bg: #fffbeb;       /* Soft Yellow */
+            --warning-text: #92400e;     /* Dark Amber */
+            --warning-border: #fcd34d;   /* Amber Border */
+            --bg-color: #f3f4f6;         /* Light Gray/Blue Body */
+            --card-bg: #ffffff;          /* White Form Container */
+            --section-bg: #f8fafc;       /* Light Gray-Blue for Sections */
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border-color: #e2e8f0;
+            --input-bg: #ffffff;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f4f7f6; 
+            background-color: var(--bg-color); 
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             padding: 40px 20px;
             margin: 0;
+            line-height: 1.6;
         }
+
         .form-container {
             width: 100%;
-            max-width: 750px;
-            background: #ffffff;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
-        }
-        h2 { color: #db3636; font-size: 1.2em; margin-top: 35px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        h3 { color: #007bff; font-size: 1.1em; margin-top: 10px; margin-bottom: 15px; font-weight: 600; }
-        label { display: block; margin-top: 15px; font-size: 0.95em; color: #444; margin-bottom: 5px; line-height: 1.5; }
-        .total-display {
-            font-weight: 600; margin-top: 20px; padding: 15px;
-            background-color: #eaf4ff; border: 1px solid #cce0ff;
-            border-radius: 6px; display: flex; justify-content: space-between;
-        }
-        input[type="number"], select, textarea { 
-            width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px;
-            box-sizing: border-box; transition: border-color 0.3s; background-color: #fff;
-        }
-        textarea { resize: vertical; height: 80px; }
-        input[type="radio"] { margin-right: 5px; transform: scale(1.2); }
-        .conditional-section {
-            display: none; padding: 20px; margin-top: 15px;
-            background-color: #fcfcfc; border: 1px solid #e0e0e0;
-            border-left: 4px solid #007bff; border-radius: 4px;
-        }
-        .verification-box {
-            margin-top: 20px;
-            background-color: #fffbe6;
-            padding: 15px;
-            border: 1px dashed #ffc107;
-            border-radius: 6px;
-        }
-        .verification-box label { margin-top: 0; font-weight: bold; color: #555; display: flex; align-items: center; }
-        .verification-box input { width: auto; margin-right: 10px; transform: scale(1.3); }
-
-        button {
-            background-color: #28a745; color: white; padding: 15px; border: none;
-            border-radius: 6px; cursor: pointer; font-size: 1.2em; font-weight: 600;
-            width: 100%; margin-top: 40px;
-        }
-        button:hover { background-color: #218838; }
-        button.loading { opacity: 0.6; cursor: wait; }
-        .instructions {
-            background-color: #fffbe6; 
-            border: 1px solid #ffe0b2; 
-            padding: 15px; 
-            border-radius: 6px; 
-            margin-bottom: 20px;
-        }
-        .fetching-data { color: #e65100; font-size: 0.9em; font-weight: bold; display:none; }
-        .char-count {
-            font-size: 0.85em;
-            color: #666;
-            text-align: right;
-            margin-top: 5px;
-            font-weight: 500;
+            max-width: 800px;
+            background: var(--card-bg);
+            padding: 40px 45px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid white;
         }
 
-        .subtitle {
+        /* Typography Override */
+        h2 { 
+            color: var(--primary-color) !important; 
+            font-size: 1.25em; 
+            margin-top: 0; 
+            margin-bottom: 15px; 
+            letter-spacing: -0.01em;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        h3 { 
+            color: var(--accent-color); 
+            font-size: 1.1em; 
+            margin-top: 10px; 
+            margin-bottom: 15px; 
+            font-weight: 600; 
+        }
+
+        .main-title {
             text-align: center; 
             border:none; 
             margin-top:0; 
-            color:#333;
+            color:#2c3e50 !important; 
+            font-size: 1.4em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted) !important;
+            font-size: 1em;
+            font-weight: 500;
+            margin-bottom: 35px;
+            margin-top: 0;
+        }
+
+        /* **********************************************
+           SECTION BOX STYLING
+           ********************************************** */
+        .exam-section {
+            background-color: var(--section-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .exam-section:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-color: #cbd5e1;
+        }
+
+        label { 
+            display: block; 
+            margin-top: 15px; 
+            font-size: 0.95em; 
+            color: var(--text-main); 
+            margin-bottom: 8px; 
+            font-weight: 500;
+        }
+
+        /* Inputs */
+        input[type="number"], select, textarea { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid #d1d5db; 
+            border-radius: 8px;
+            box-sizing: border-box; 
+            background-color: var(--input-bg);
+            font-size: 1em;
+            transition: all 0.2s ease;
+            color: #333;
+        }
+
+        input[type="number"]:focus, select:focus, textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        textarea { resize: vertical; height: 100px; }
+
+        input[type="radio"] { 
+            margin-right: 8px; 
+            accent-color: var(--accent-color); 
+            transform: scale(1.1); 
+        }
+        
+        input[type="checkbox"].toggle-check { 
+            margin-right: 12px; 
+            transform: scale(1.3); 
+            cursor: pointer; 
+            accent-color: var(--accent-color);
+        }
+
+        /* The Form that opens up */
+        .conditional-section {
+            display: none; 
+            padding: 25px; 
+            margin-top: 20px;
+            background-color: #ffffff; 
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-color); 
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .instructions {
+            background-color: #eff6ff; 
+            border: 1px solid #dbeafe; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-bottom: 30px;
+        }
+        .instructions h3 { color: #1e40af !important; margin-bottom: 5px; }
+        .instructions ul { color: #374151 !important; margin-top: 5px;}
+
+        .total-display {
+            font-weight: 700; 
+            margin-top: 25px; 
+            padding: 18px;
+            background-color: #1f2937; 
+            color: #fff; 
+            border-radius: 8px; 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Confirmation Box */
+        .confirm-box {
+            display: none; 
+            margin-top: 20px;
+            background-color: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            color: var(--warning-text);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .confirm-btn {
+            background-color: #f59e0b;
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.95em;
+            width: auto;
+            margin-top: 15px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .confirm-btn:hover { background-color: #d97706; transform: translateY(-1px); }
+
+        .verification-box {
+            margin-top: 25px;
+            background-color: #f0fdf4;
+            padding: 15px;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+        }
+        .verification-box label { color: #166534; font-weight: 600; margin-top:0; }
+        .verification-box input { accent-color: #15803d; }
+
+        button[type="submit"] {
+            background-color: var(--success-color); 
+            color: white; 
+            padding: 18px; 
+            border: none;
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: 600;
+            width: 100%; 
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        button[type="submit"]:hover { background-color: #059669; transform: translateY(-2px); }
+        button.loading { opacity: 0.7; cursor: wait; }
+
+        /* Print Button Style */
+        #printBtn {
+            background-color: #2c3e50; 
+            color: white; 
+            padding: 15px; 
+            border: none;
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: 600;
+            width: 100%; 
+            margin-top: 15px;
+            display: none; /* Hidden by default */
+            box-shadow: 0 4px 6px rgba(44, 62, 80, 0.3);
+        }
+        #printBtn:hover { background-color: #1a252f; }
+
+        .fetching-data { color: var(--accent-color); font-size: 0.9em; font-weight: bold; display:none; }
+        .char-count {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        /* **********************************************
+           PREVIEW MODAL CSS - FIXED (Hidden by default)
+           ********************************************** */
+        .modal-overlay {
+            display: none; /* This ensures it is hidden on load */
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            
+            /* Properties for when it is shown (via JS 'display: flex') */
+            overflow-y: auto; 
+            align-items: flex-start; 
+            justify-content: center;
+            backdrop-filter: blur(3px);
+            padding: 0;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px; 
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 40px auto; /* 40px margin ensures buttons aren't cut off */
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            background: var(--section-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .modal-header h3 { margin: 0; color: var(--primary-color); }
+
+        .modal-body {
+            padding: 30px;
+            font-size: 0.95em;
+        }
+
+        .preview-section {
+            margin-bottom: 25px;
+            border-bottom: 1px dashed #e5e7eb;
+            padding-bottom: 15px;
+        }
+        .preview-section:last-child { border-bottom: none; }
+        .preview-title { font-weight: 700; color: var(--accent-color); margin-bottom: 8px; display: block; font-size: 1.05em;}
+        
+        .preview-row { display: flex; justify-content: space-between; margin-bottom: 6px; color: #374151; }
+        .preview-val { font-weight: 600; color: #111; }
+        
+        .preview-details-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid var(--border-color);
+            background: #f9fafb;
+            display: flex;
+            gap: 15px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .btn-edit {
+            flex: 1;
+            padding: 12px;
+            background-color: white;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-confirm {
+            flex: 1;
+            padding: 12px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+        }
+        .btn-confirm:hover { background-color: #059669; }
+
+        /* **********************************************
+           PRINT CSS (FIXED FOR A4 CUT OFF)
+           ********************************************** */
+        #printable-area { display: none; }
+        
+        @media print {
+            @page {
+                size: A4;
+                margin: 1cm; /* Set safe margins */
+            }
+            
+            body * { visibility: hidden; }
+            .form-container, .modal-overlay { display: none !important; }
+            
+            #printable-area { 
+                display: block !important; 
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                box-sizing: border-box;
+                visibility: visible;
+                font-family: Arial, sans-serif;
+                color: black;
+                background: white;
+                padding: 0;
+            }
+            #printable-area * { visibility: visible; box-sizing: border-box; }
+            
+            .print-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid black; padding-bottom: 10px; }
+            .print-header h2 { color: black !important; margin: 5px 0; font-size: 16px; border:none; }
+            .print-header p { margin: 0; font-size: 12px; }
+            
+            .print-section { 
+                margin-bottom: 12px; 
+                border: 1px solid #333; 
+                padding: 8px; 
+                page-break-inside: avoid; 
+                width: 100%; 
+            }
+            
+            .print-title { font-weight: bold; font-size: 13px; margin-bottom: 5px; display: block; text-decoration: none; color: #000 !important;}
+            .print-row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 3px; }
+            
+            /* Remove background colors for print to save ink and clarity */
+            .preview-details-box { background-color: transparent; border: none; padding: 0; margin-top: 5px; }
         }
     </style>
 </head>
 <body>
 
 <div class="form-container">
-    <h2 style="text-align: center; border:none; margin-top:0; color:#333;">2021 ഒന്നാം വർഷ പൊതു പരീക്ഷ മുതൽ  2024 ഒന്നും രണ്ടും വർഷ പൊതു പരീക്ഷ വരെയുള്ള പരീക്ഷാ നടത്തിപ്പിനായി ചിലവായ തുകകളുടെ വിവരശേഖരണം</h2>
+    <h2 class="main-title">2021 ഒന്നാം വർഷ പൊതു പരീക്ഷ മുതൽ  2024 ഒന്നും രണ്ടും വർഷ പൊതു പരീക്ഷ വരെയുള്ള പരീക്ഷാ നടത്തിപ്പിനായി ചിലവായ തുകകളുടെ വിവരശേഖരണം</h2>
     <h3 class="subtitle">പരീക്ഷാ വിഭാഗം, പൊതു വിദ്യാഭ്യാസ വകുപ്പ് (വി. എച്ച്. എസ്. ഇ.) തിരുവനന്തപുരം</h3>
     
 
     <div class="instructions">
-        <h3 style="color: #e65100; margin-top: 0;">⚠️ പ്രധാന നിർദ്ദേശങ്ങൾ</h3>
-        <ul style="margin-top: 10px; padding-left: 20px; color: #4d4ae4;">
+        <h3>⚠️ പ്രധാന നിർദ്ദേശങ്ങൾ</h3>
+        <ul>
             <li>ഓരോ ചോദ്യവും <b>വ്യക്തമായി മനസ്സിലാക്കിയതിനു ശേഷം മാത്രം</b> ഉത്തരങ്ങൾ പൂരിപ്പിക്കുക.</li><br>
             <li>തുകകൾ ടൈപ്പ് ചെയ്യുമ്പോൾ <b>തെറ്റുകളില്ലായെന്ന് വീണ്ടും ഉറപ്പുവരുത്തുക</b>.</li><br>
             <li>ഒരു സ്കൂൾ <b>ഒന്നിൽ കൂടുതൽ തവണ ഈ ഫോം പൂരിപ്പിച്ച് അയക്കാൻ പാടില്ല</b>. എന്നാൽ പ്രത്യേക സാഹചര്യത്തിൽ അങ്ങിനെ
                 ചെയ്യേണ്ടി വരുന്ന പക്ഷം ഏറ്റവും അവസാനം ലഭിച്ച എൻട്രിയെ ശരിയായി കണക്കാക്കുന്നതായിരിക്കും.</li><br>
-            <li>ഈ ഫോം പൂരിപ്പിച്ച് അയക്കുന്നതിനുള്ള <b>അവസാന തീയതി 00/00/2025 ആണ്</b>.</li>
         </ul>
     </div>
 
     <form id="submissionForm">
         
-        <h2 style="color: #333;">ഭാഗം 1: സ്കൂൾ സംബന്ധിച്ച വിവരങ്ങൾ</h2>
-        <p class="fetching-data" id="loadingMsg">സ്കൂൾ വിവരങ്ങൾ ലോഡ് ചെയ്യുന്നു...</p>
-        
-        <label>ജില്ല:</label>
-        <select id="district" name="District" required><option value="">ലോഡ് ചെയ്യുന്നു...</option></select>
-        
-        <label>സ്കൂൾ കോഡ്:</label>
-        <select id="schoolCode" name="School_Code" required><option value="">-- ആദ്യം ജില്ല തിരഞ്ഞെടുക്കുക --</option></select>
-        
-        <label>സ്കൂളിൻ്റെ പേര്:</label>
-        <select id="schoolName" name="School_Name" required><option value="">-- ആദ്യം സ്കൂൾ കോഡ് തിരഞ്ഞെടുക്കുക --</option></select>
+        <div class="exam-section">
+            <h2 style="color: #2c3e50 !important; margin-top:0;">സ്കൂൾ സംബന്ധിച്ച വിവരങ്ങൾ</h2>
+            <p class="fetching-data" id="loadingMsg">സ്കൂൾ വിവരങ്ങൾ ലോഡ് ചെയ്യുന്നു...</p>
+            
+            <label>ജില്ല:</label>
+            <select id="district" name="District" required><option value="">ലോഡ് ചെയ്യുന്നു...</option></select>
+            
+            <label>സ്കൂൾ കോഡ്:</label>
+            <select id="schoolCode" name="School_Code" required><option value="">-- ആദ്യം ജില്ല തിരഞ്ഞെടുക്കുക --</option></select>
+            
+            <label>സ്കൂളിൻ്റെ പേര്:</label>
+            <select id="schoolName" name="School_Name" required><option value="">-- ആദ്യം സ്കൂൾ കോഡ് തിരഞ്ഞെടുക്കുക --</option></select>
+        </div>
 
         <div class="exam-section">
             <h2>2021 ഒന്നാം വർഷ പരീക്ഷ (സെപ്റ്റമ്പർ 2021)</h2>
             <label>ഈ പരീക്ഷയ്ക്ക് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2021_Sept_Status" value="Yes" onchange="toggle('2021_Sept', false)" required> ഉണ്ട്
-                <input type="radio" name="2021_Sept_Status" value="No" onchange="toggle('2021_Sept', true)"> ഇല്ല
+                <input type="radio" name="2021_Sept_Status" value="Yes" onchange="preCheck('2021_Sept', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2021_Sept_Status" value="No" onchange="preCheck('2021_Sept', 'confirm')"> ഇല്ല
             </div>
+            
+            <div id="conf_2021_Sept" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2021_Sept')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2021_Sept" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -141,12 +472,18 @@
 
         <div class="exam-section">
             <h2>2021 ഒന്നാം വർഷ ഇംപ്രൂവ്മെൻറ് പരീക്ഷ (ജനുവരി 2022)</h2>
-            <h5>കോവിഡ് കാലമായതിനാൽ 2021 ലെ ഈ പരീക്ഷ 2022 ജനുവരിയിലാണ് നടന്നത് എന്ന് ഓർമിക്കുമല്ലോ!</h5>
+            <h5 style="color: var(--text-muted);">കോവിഡ് കാലമായതിനാൽ 2021 ലെ ഈ പരീക്ഷ 2022 ജനുവരിയിലാണ് നടന്നത് എന്ന് ഓർമിക്കുമല്ലോ!</h5>
             <label>ഈ പരീക്ഷയ്ക്ക് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2022_Jan_Status" value="Yes" onchange="toggle('2022_Jan', false)" required> ഉണ്ട്
-                <input type="radio" name="2022_Jan_Status" value="No" onchange="toggle('2022_Jan', true)"> ഇല്ല
+                <input type="radio" name="2022_Jan_Status" value="Yes" onchange="preCheck('2022_Jan', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2022_Jan_Status" value="No" onchange="preCheck('2022_Jan', 'confirm')"> ഇല്ല
             </div>
+
+            <div id="conf_2022_Jan" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2022_Jan')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2022_Jan" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -169,9 +506,15 @@
             <h2>2022 ഒന്നാം വർഷ പരീക്ഷ (ജൂൺ), രണ്ടാം വർഷ പരീക്ഷ (മാർച്ച്)</h2>
             <label>ഈ പരീക്ഷ/കൾക്ക് പി.ഡി. അക്കൗണ്ടിൽ നിന്ന് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2022_Reg_Status" value="Yes" onchange="toggle('2022_Reg', false)" required> ഉണ്ട്
-                <input type="radio" name="2022_Reg_Status" value="No" onchange="toggle('2022_Reg', true)"> ഇല്ല
+                <input type="radio" name="2022_Reg_Status" value="Yes" onchange="preCheck('2022_Reg', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2022_Reg_Status" value="No" onchange="preCheck('2022_Reg', 'confirm')"> ഇല്ല
             </div>
+
+            <div id="conf_2022_Reg" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2022_Reg')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2022_Reg" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -192,13 +535,19 @@
 
         <div class="exam-section">
             <h2>2022 സേ പരീക്ഷ (ജൂലൈ)</h2>
-            <h5>സേ സെന്ററുകൾ അല്ലാത്ത സ്കൂളുകൾ "ബാധകമല്ല" എന്ന ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക.</h5>
+            <h5 style="color: var(--text-muted);">സേ സെന്ററുകൾ അല്ലാത്ത സ്കൂളുകൾ "ബാധകമല്ല" എന്ന ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക.</h5>
             <label>ഈ പരീക്ഷയ്ക്ക് പി.ഡി. അക്കൗണ്ടിൽ നിന്ന് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2022_SAY_Status" value="Yes" onchange="toggle('2022_SAY', false)" required> ഉണ്ട്
-                <input type="radio" name="2022_SAY_Status" value="No" onchange="toggle('2022_SAY', true)"> ഇല്ല
-                <input type="radio" name="2022_SAY_Status" value="Not Applicable" onchange="toggle('2022_SAY', false)"> ബാധകമല്ല (Not Applicable)
+                <input type="radio" name="2022_SAY_Status" value="Yes" onchange="preCheck('2022_SAY', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2022_SAY_Status" value="No" onchange="preCheck('2022_SAY', 'confirm')"> ഇല്ല
+                <input type="radio" name="2022_SAY_Status" value="Not Applicable" onchange="preCheck('2022_SAY', 'hide')"> ബാധകമല്ല (Not Applicable)
             </div>
+
+            <div id="conf_2022_SAY" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2022_SAY')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2022_SAY" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -221,9 +570,15 @@
             <h2>2022 ഇംപ്രൂവ്മെന്റ് പരീക്ഷ (ഒക്ടോബർ)</h2>
             <label>ഈ പരീക്ഷയ്ക്ക് പി.ഡി. അക്കൗണ്ടിൽ നിന്ന് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2022_Imp_Status" value="Yes" onchange="toggle('2022_Imp', false)" required> ഉണ്ട്
-                <input type="radio" name="2022_Imp_Status" value="No" onchange="toggle('2022_Imp', true)"> ഇല്ല
+                <input type="radio" name="2022_Imp_Status" value="Yes" onchange="preCheck('2022_Imp', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2022_Imp_Status" value="No" onchange="preCheck('2022_Imp', 'confirm')"> ഇല്ല
             </div>
+
+            <div id="conf_2022_Imp" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2022_Imp')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2022_Imp" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -246,9 +601,15 @@
             <h2>2023 ഒന്നും രണ്ടും വർഷ പരീക്ഷകൾ (മാർച്ച്)</h2>
             <label>ഈ പരീക്ഷ/കൾക്ക് പി.ഡി. അക്കൗണ്ടിൽ നിന്ന് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2023_Mar_Status" value="Yes" onchange="toggle('2023_Mar', false)" required> ഉണ്ട്
-                <input type="radio" name="2023_Mar_Status" value="No" onchange="toggle('2023_Mar', true)"> ഇല്ല
+                <input type="radio" name="2023_Mar_Status" value="Yes" onchange="preCheck('2023_Mar', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2023_Mar_Status" value="No" onchange="preCheck('2023_Mar', 'confirm')"> ഇല്ല
             </div>
+
+            <div id="conf_2023_Mar" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2023_Mar')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2023_Mar" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -269,13 +630,19 @@
 
         <div class="exam-section">
             <h2>2023 സേ പരീക്ഷ (ജൂൺ)</h2>
-            <h5>സേ സെന്ററുകൾ അല്ലാത്ത സ്കൂളുകൾ "ബാധകമല്ല" എന്ന ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക.</h5>
+            <h5 style="color: var(--text-muted);">സേ സെന്ററുകൾ അല്ലാത്ത സ്കൂളുകൾ "ബാധകമല്ല" എന്ന ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക.</h5>
             <label>ഈ പരീക്ഷയ്ക്ക് പി.ഡി. അക്കൗണ്ടിൽ നിന്ന് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2023_SAY_Status" value="Yes" onchange="toggle('2023_SAY', false)" required> ഉണ്ട്
-                <input type="radio" name="2023_SAY_Status" value="No" onchange="toggle('2023_SAY', true)"> ഇല്ല
-                <input type="radio" name="2023_SAY_Status" value="Not Applicable" onchange="toggle('2023_SAY', false)"> ബാധകമല്ല (Not Applicable)
+                <input type="radio" name="2023_SAY_Status" value="Yes" onchange="preCheck('2023_SAY', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2023_SAY_Status" value="No" onchange="preCheck('2023_SAY', 'confirm')"> ഇല്ല
+                <input type="radio" name="2023_SAY_Status" value="Not Applicable" onchange="preCheck('2023_SAY', 'hide')"> ബാധകമല്ല (Not Applicable)
             </div>
+
+            <div id="conf_2023_SAY" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2023_SAY')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2023_SAY" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -298,9 +665,15 @@
             <h2>2023 ഇംപ്രൂവ്മെന്റ് പരീക്ഷ (സെപ്റ്റമ്പർ)</h2>
             <label>ഈ പരീക്ഷയ്ക്ക് പി.ഡി. അക്കൗണ്ടിൽ നിന്ന് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2023_Imp_Status" value="Yes" onchange="toggle('2023_Imp', false)" required> ഉണ്ട്
-                <input type="radio" name="2023_Imp_Status" value="No" onchange="toggle('2023_Imp', true)"> ഇല്ല
+                <input type="radio" name="2023_Imp_Status" value="Yes" onchange="preCheck('2023_Imp', 'hide')" required> ഉണ്ട്
+                <input type="radio" name="2023_Imp_Status" value="No" onchange="preCheck('2023_Imp', 'confirm')"> ഇല്ല
             </div>
+
+            <div id="conf_2023_Imp" class="confirm-box">
+                <p style="margin:0;">താങ്കൾ <b>"ഇല്ല"</b> എന്ന ഓപ്ഷൻ ആണ് തിരഞ്ഞെടുത്തത്. അലോട്ട്മെന്റ് ലഭിച്ചിട്ടില്ല എന്ന് ഒന്നുകൂടി ഉറപ്പ് വരുത്തിയതിനു ശേഷം നിങ്ങൾക്ക് ആവശ്യമായ അലോട്ട്മെന്റ് തുകയുടെ വിവരങ്ങൾ നൽകുന്നതിനായി താഴെ നൽകിയിരിക്കുന്ന ബട്ടൺ ക്ലിക്ക് ചെയ്യുക.</p>
+                <button type="button" class="confirm-btn" onclick="proceedToFill('2023_Imp')">തുടരുക (Proceed)</button>
+            </div>
+
             <div id="2023_Imp" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
                 <label>1. കണ്ടിൻജൻസി ഇനത്തിൽ ചെലവാക്കിയ മൊത്തം തുക.:</label>
@@ -321,10 +694,12 @@
 
         <div class="exam-section">
             <h2>2024 ഒന്നും രണ്ടും വർഷ പരീക്ഷകൾ (മാർച്ച്)</h2>
-            <label>ഈ പരീക്ഷ/കൾക്ക് പി.ഡി. അക്കൗണ്ടിൽ നിന്ന് നിങ്ങൾക്ക് അലോട്ട്മെന്റ് ലഭിച്ചിട്ടുണ്ടോ?</label>
+            <label>ഈ പരീക്ഷകളുടെ ചെലവുകൾക്കുള്ള തുക PD അക്കൌണ്ടിൽ നിന്ന് പിൻവലിക്കാൻ എല്ലാ സ്കൂളുകൾക്കും അനുമതി ലഭിച്ചിട്ടുള്ളതിനാൽ എല്ലാ സ്കൂളുകളും ഈ ഭാഗം പൂരിപ്പിക്കേണ്ടതാണ്.</label>
             <div style="margin-top: 10px;">
-                <input type="radio" name="2024_Mar_Status" value="Yes" onchange="toggle('2024_Mar', false)" required> ഉണ്ട്
-                <input type="radio" name="2024_Mar_Status" value="No" onchange="toggle('2024_Mar', true)"> ഇല്ല
+                <label style="display:inline-flex; align-items:center; font-weight:bold; color:var(--accent-color); cursor:pointer;">
+                    <input type="checkbox" name="2024_Mar_Status" value="Yes" class="toggle-check" onchange="toggle('2024_Mar', this.checked)" required>
+                    പൂരിപ്പിക്കുക (Fill Details)
+                </label>
             </div>
             <div id="2024_Mar" class="conditional-section">
                 <h3>പരീക്ഷാ നടത്തിപ്പിന് ചെലവായ തുകയുടെ ഇനം തിരിച്ചുള്ള കണക്ക്</h3>
@@ -351,18 +726,37 @@
             <div id="charCount" class="char-count">250 characters remaining</div>
         </div>
 
-        <button type="submit">ഡാറ്റ സമർപ്പിക്കുക (Submit)</button>
+        <button type="submit" id="submitBtn" style="display:none;">ഡാറ്റ സമർപ്പിക്കുക (Submit)</button>
         <p id="message" style="text-align:center; font-weight:bold;"></p>
+        <button id="printBtn" type="button" onclick="printData()">പ്രിന്റ് എടുക്കുക (Print Statement)</button>
     </form>
 </div>
+
+<div id="previewModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>താങ്കൾ നല്കിയ വിവരങ്ങളാണ് താഴെ നല്കിയിരിക്കുന്നത്. വിവരങ്ങൾ വായിച്ച് ശരിയാണെന്ന് ഉറപ്പാക്കിയതിന് ശേഷം ചുവടെ നൽകിയിരിക്കുന്ന Confirm & Submit ക്ലിക്ക് ചെയ്ത് ഫോം സമർപ്പിക്കാവുന്നതാണ്. അല്ലെങ്കിൽ Edit ബട്ടൺ ക്ലിക്ക് ചെയ്ത് വേണ്ട തിരുത്തലുകൾ വരുത്തി വീണ്ടും സമർപ്പിക്കാവുന്നതാണ്.</h3>
+            <span style="cursor:pointer; font-size:1.5em;" onclick="closePreview()">&times;</span>
+        </div>
+        <div class="modal-body" id="previewBody">
+            </div>
+        <div class="modal-footer">
+            <button class="btn-edit" onclick="closePreview()">തിരുത്തുക (Edit)</button>
+            <button class="btn-confirm" id="finalSubmitBtn" onclick="submitFinalData()">ശരിയാണ്, സമർപ്പിക്കുക (Confirm & Submit)</button>
+        </div>
+    </div>
+</div>
+
+<div id="printable-area"></div>
 
 <script>
     // *****************************************************
     // CONFIGURATION
     // *****************************************************
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwPMe4v7Pm6Mw_giDw6iUW75-DNdt0roL71d_x8cgX88W1djo76rdxEkPCKjp_70F0TyQ/exec'; // PASTE YOUR URL HERE
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwPMe4v7Pm6Mw_giDw6iUW75-DNdt0roL71d_x8cgX88W1djo76rdxEkPCKjp_70F0TyQ/exec';
 
     let schoolData = [];
+    let lastSubmittedHTML = ''; 
 
     // *****************************************************
     // 1. FETCH SCHOOL DATA ON LOAD
@@ -425,6 +819,27 @@
     // *****************************************************
     // 3. TOGGLE VISIBILITY
     // *****************************************************
+    window.preCheck = function(id, action) {
+        const confirmBox = document.getElementById('conf_' + id);
+        
+        if(action === 'confirm') {
+            toggle(id, false); 
+            if(confirmBox) {
+                confirmBox.style.display = 'block';
+                confirmBox.style.border = "1px solid #ffeeba";
+            }
+        } 
+        else if (action === 'hide') {
+            if(confirmBox) confirmBox.style.display = 'none';
+            toggle(id, false);
+        }
+    };
+
+    window.proceedToFill = function(id) {
+        document.getElementById('conf_' + id).style.display = 'none';
+        toggle(id, true);
+    };
+
     window.toggle = function(id, show) {
         const div = document.getElementById(id);
         const inputs = div.querySelectorAll('input, select');
@@ -468,49 +883,251 @@
     });
 
     // *****************************************************
-    // 6. SUBMIT TO GOOGLE SHEET
+    // 6. PREVIEW & SUBMIT LOGIC
     // *****************************************************
-    document.getElementById('submissionForm').addEventListener('submit', function(e) {
+    const form = document.getElementById('submissionForm');
+    const modal = document.getElementById('previewModal');
+    const previewBody = document.getElementById('previewBody');
+    const finalBtn = document.getElementById('finalSubmitBtn');
+    const msg = document.getElementById('message');
+    const printBtn = document.getElementById('printBtn');
+
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const btn = document.querySelector('button[type="submit"]');
-        const msg = document.getElementById('message');
         
-        btn.innerText = "ഡാറ്റ സമർപ്പിക്കുന്നു... (Submitting)";
-        btn.classList.add('loading');
+        // --- VALIDATION ---
+        const sectionsToCheck = [
+            '2021_Sept', '2022_Jan', '2022_Reg', '2022_SAY', 
+            '2022_Imp', '2023_Mar', '2023_SAY', '2023_Imp'
+        ];
+
+        for (const id of sectionsToCheck) {
+            const radio = document.querySelector(`input[name="${id}_Status"]:checked`);
+            const div = document.getElementById(id);
+            if (radio && radio.value === "No" && div.style.display === "none") {
+                alert("ദയവായി 'ഇല്ല' എന്ന് രേഖപ്പെടുത്തിയ സെക്ഷനുകളിലെ 'തുടരുക (Proceed)' ബട്ടൺ ക്ലിക്ക് ചെയ്ത് വിവരങ്ങൾ പൂരിപ്പിക്കുക.");
+                const confBox = document.getElementById('conf_' + id);
+                if(confBox) {
+                    confBox.scrollIntoView({behavior: "smooth", block: "center"});
+                    confBox.style.border = "2px solid #dc3545";
+                }
+                return;
+            }
+        }
+
+        generatePreview();
+        modal.style.display = "flex"; 
+    });
+
+    function closePreview() {
+        modal.style.display = "none";
+    }
+
+    function generatePreview() {
+        let html = '';
+        const formData = new FormData(form);
+
+        html += `<div class="preview-section">
+                    <span class="preview-title">School Details</span>
+                    <div class="preview-row"><span>District:</span> <span class="preview-val">${formData.get('District')}</span></div>
+                    <div class="preview-row"><span>School:</span> <span class="preview-val">${formData.get('School_Name')} (${formData.get('School_Code')})</span></div>
+                 </div>`;
+
+        const exams = [
+            { id: '2021_Sept', title: '2021 I Year Exam (September 2021)' },
+            { id: '2022_Jan', title: '2021 I Year Improvement Exam (January 2022)' },
+            { id: '2022_Reg', title: '2022 I Year Exam (June), II Year Exam (March)' },
+            { id: '2022_SAY', title: '2022 SAY Exam (July)' },
+            { id: '2022_Imp', title: '2022 Improvement Exam (October)' },
+            { id: '2023_Mar', title: '2023 I & II Year Exams (March)' },
+            { id: '2023_SAY', title: '2023 SAY Exam (June)' },
+            { id: '2023_Imp', title: '2023 Improvement Exam (September)' },
+            { id: '2024_Mar', title: '2024 I & II Year Exams (March)' }
+        ];
+
+        exams.forEach(exam => {
+            let status = formData.get(exam.id + '_Status');
+            let showDetails = false;
+
+            if (exam.id === '2024_Mar') {
+                if(status === 'Yes') showDetails = true;
+            } else {
+                if(status === 'No') showDetails = true;
+            }
+
+            html += `<div class="preview-section print-section">
+                        <span class="preview-title print-title">${exam.title}</span>`;
+            
+            if (showDetails) {
+                 const cont = formData.get(exam.id + '_Contingency') || '0';
+                 const rem = formData.get(exam.id + '_Remuneration') || '0';
+                 const duty = formData.get(exam.id + '_Duty') || '0';
+                 const tada = formData.get(exam.id + '_TADA') || '0';
+                 const total = document.getElementById('total_' + exam.id).innerText;
+                 
+                 // --- HEADING LOGIC ---
+                 let subHeadingText = "";
+                 if(exam.id === '2024_Mar') {
+                     subHeadingText = "Details of the allotment received";
+                 } else {
+                     subHeadingText = "Details of the Allotment Required";
+                 }
+
+                 if(exam.id === '2024_Mar') {
+                     html += `<div class="preview-row print-row"><span>Status:</span> <span class="preview-val" style="color:green">Yes (Allotment Received)</span></div>`;
+                 } else {
+                     html += `<div class="preview-row print-row"><span>Allotment Received:</span> <span class="preview-val" style="color:#d97706">No</span></div>`;
+                 }
+                 
+                 html += `<h5 style="margin: 12px 0 5px 0; font-size: 0.9em; color: #4b5563; font-weight: 700; text-decoration: underline;">${subHeadingText}</h5>`;
+
+                 html += `<div class="preview-details-box">
+                            <div class="preview-row print-row"><span>Contingency:</span> <span>₹${cont}</span></div>
+                            <div class="preview-row print-row"><span>Night Watchman Remuneration:</span> <span>₹${rem}</span></div>
+                            <div class="preview-row print-row"><span>Teachers' Remuneration:</span> <span>₹${duty}</span></div>
+                            <div class="preview-row print-row"><span>TA/DA:</span> <span>₹${tada}</span></div>
+                            <div class="preview-row print-row" style="margin-top:8px; border-top:1px solid #ccc; padding-top:5px; font-weight:bold;">
+                                <span>Total:</span> <span style="color:var(--primary-color)">${total}</span>
+                            </div>
+                          </div>`;
+            } else {
+                 let statusText = status;
+                 let color = "#374151";
+                 if(status === 'Yes' && exam.id !== '2024_Mar') {
+                     statusText = "Yes (Allotment Received)";
+                     color = "green";
+                 } else if (!status) {
+                     statusText = "Not Selected / No";
+                 }
+                 html += `<div class="preview-row print-row"><span>Status:</span> <span class="preview-val" style="color:${color}">${statusText}</span></div>`;
+            }
+            html += `</div>`;
+        });
+
+        const comments = formData.get('Comments');
+        if(comments) {
+            html += `<div class="preview-section print-section"><span class="preview-title print-title">Remarks</span><p>${comments}</p></div>`;
+        }
+
+        previewBody.innerHTML = html;
+        return html;
+    }
+
+    // *****************************************************
+    // 7. SUBMIT FINAL DATA
+    // *****************************************************
+    window.submitFinalData = function() {
+        lastSubmittedHTML = generatePreview(); 
+        
+        finalBtn.innerText = "Submitting...";
+        finalBtn.disabled = true;
+        finalBtn.style.opacity = "0.7";
         msg.innerText = "";
+        printBtn.style.display = "none"; 
+
+        const formData = new FormData(form);
         
-        const formData = new FormData(e.target);
-        
-        // Fill Zeros Logic
         for (const [key, value] of formData.entries()) {
             if(key.match(/_(Contingency|Remuneration|Duty|TADA|GrandTotal)$/)) {
                 if(value === "") formData.set(key, "0");
             }
         }
-        
+
         fetch(scriptURL, { method: 'POST', body: formData })
         .then(response => {
+            closePreview(); 
+            
             msg.innerText = "ഡാറ്റ വിജയകരമായി സമർപ്പിച്ചു! (Successfully Submitted)";
             msg.style.color = "green";
-            e.target.reset();
-            // Reset Dropdowns
+            
+            form.reset();
+            
+            // HIDE BUTTON SAFELY
+            const sBtn = document.getElementById('submitBtn');
+            if(sBtn) sBtn.style.display = 'none';
+
+            printBtn.style.display = "block";
+            
+            const cSelect = document.getElementById('schoolCode');
+            const nSelect = document.getElementById('schoolName');
+            const charCount = document.getElementById('charCount');
+            
             cSelect.innerHTML = '<option value="">-- സ്കൂൾ കോഡ് തിരഞ്ഞെടുക്കുക --</option>';
             nSelect.innerHTML = '<option value="">-- സ്കൂളിൻ്റെ പേര് തിരഞ്ഞെടുക്കുക --</option>';
-            // Reset Char Count
             charCount.innerText = "250 characters remaining";
             
             document.querySelectorAll('.conditional-section').forEach(d => d.style.display='none');
-            
-            btn.innerText = "ഡാറ്റ സമർപ്പിക്കുക (Submit)";
-            btn.classList.remove('loading');
+            document.querySelectorAll('.confirm-box').forEach(d => d.style.display='none');
+            document.querySelectorAll('.total-display span:last-child').forEach(s => s.innerText = "₹0.00");
+
+            finalBtn.innerText = "ശരിയാണ്, സമർപ്പിക്കുക (Confirm & Submit)";
+            finalBtn.disabled = false;
+            finalBtn.style.opacity = "1";
         })
         .catch(error => {
+            console.error('Error!', error.message);
             msg.innerText = "തടസ്സം നേരിട്ടു. വീണ്ടും ശ്രമിക്കുക. (Error!)";
             msg.style.color = "red";
-            btn.innerText = "വീണ്ടും ശ്രമിക്കുക (Retry)";
-            btn.classList.remove('loading');
+            finalBtn.innerText = "ശ്രമിക്കുക (Retry)";
+            finalBtn.disabled = false;
+            finalBtn.style.opacity = "1";
         });
-    });
+    };
+
+    // *****************************************************
+    // 8. PRINT LOGIC
+    // *****************************************************
+    window.printData = function() {
+        const printArea = document.getElementById('printable-area');
+        
+        const header = `
+            <div class="print-header">
+                <h2>Board of VHS Examinations, Department of General Education, Govt. of Kerala</h2>
+                <h3>Statement of Examination Expenditure</h3>
+                <p>Submitted on: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}</p>
+            </div>
+        `;
+        
+        const footer = `
+            <div style="margin-top: 40px; text-align: center; border-top: 1px dotted #333; padding-top: 15px;">
+                <p style="font-size: 12px; font-style: italic; margin: 0;">
+                    <strong>Note:</strong> This document is a record of the data submitted online.<br>
+                    Please print and preserve this copy in the office file for future reference.
+                </p>
+            </div>
+        `;
+
+        printArea.innerHTML = header + lastSubmittedHTML + footer;
+        window.print();
+    };
+
+    // *****************************************************
+    // 9. TOGGLE SUBMIT BUTTON VISIBILITY
+    // *****************************************************
+    const submitBtnEl = document.getElementById('submitBtn');
+    const formEl = document.getElementById('submissionForm');
+
+    function checkFormActivity() {
+        if(!submitBtnEl) return; // Safety check
+
+        const isAnyRadioSelected = Array.from(formEl.querySelectorAll('input[type="radio"][name$="_Status"]'))
+                                        .some(radio => radio.checked);
+
+        const is2024Checked = formEl.querySelector('input[name="2024_Mar_Status"]').checked;
+
+        if (isAnyRadioSelected || is2024Checked) {
+            submitBtnEl.style.display = 'block';
+            
+            if(document.getElementById('message').innerText.includes("Successfully Submitted")) {
+                document.getElementById('message').innerText = "";
+                document.getElementById('printBtn').style.display = "none"; 
+            }
+        } else {
+            submitBtnEl.style.display = 'none';
+        }
+    }
+
+    formEl.addEventListener('change', checkFormActivity);
 </script>
 </body>
 </html>
