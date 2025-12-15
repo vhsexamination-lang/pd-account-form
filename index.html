@@ -975,7 +975,7 @@
                  }
 
                  if(exam.id === '2024_Mar') {
-                     html += `<div class="preview-row print-row"><span>Status:</span> <span class="preview-val" style="color:green">Yes (Allotment Received)</span></div>`;
+                     html += `<div class="preview-row print-row"><span>Status:</span> <span class="preview-val" style="color:green">Yes</span></div>`;
                  } else {
                      html += `<div class="preview-row print-row"><span>Allotment Received:</span> <span class="preview-val" style="color:#d97706">No</span></div>`;
                  }
@@ -995,7 +995,7 @@
                  let statusText = status;
                  let color = "#374151";
                  if(status === 'Yes' && exam.id !== '2024_Mar') {
-                     statusText = "Yes (Allotment Received)";
+                     statusText = "Yes";
                      color = "green";
                  } else if (!status) {
                      statusText = "Not Selected / No";
